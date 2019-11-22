@@ -1,4 +1,4 @@
-Puppet::Functions.create_function(:hiera_dynamodb) do
+Puppet::Functions.create_function(:dynamodb_lookup_key) do
 
   # begin
   #   require 'aws-sdk-dynamodb'
@@ -6,15 +6,15 @@ Puppet::Functions.create_function(:hiera_dynamodb) do
   #   raise Puppet::DataBinding::LookupError, "Must install lookup_http gem to use hiera-http"
   # end
 
-  dispatch :lookup_key do
-    param 'Variant[String, Numeric]', :key
-    param 'Hash', :options
+  dispatch :dynamodb_lookup_key do
+    param 'String[1]', :key
+    param 'Hash[String[1],Any]', :options
     param 'Puppet::LookupContext', :context
   end
 
-  def lookup_key(key, options, context)
+  def dynamodb_lookup_key(key, options, context)
 
-    return context.interpolate("42")
+    return "42"
 
   end
 
