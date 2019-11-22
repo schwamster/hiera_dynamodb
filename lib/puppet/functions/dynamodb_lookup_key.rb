@@ -16,6 +16,7 @@ Puppet::Functions.create_function(:dynamodb_lookup_key) do
 
     if key == "answertoall"
       return "42"
+    end
 
     context.not_found
     return nil
